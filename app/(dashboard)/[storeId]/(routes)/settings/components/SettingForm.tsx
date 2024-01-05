@@ -1,5 +1,6 @@
 "use client";
 import AlertModal from "@/components/modals/alert-modal";
+import ApiAlert from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,6 +13,7 @@ import {
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useOrigin } from "@/hooks/use-origin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Store } from "@prisma/client";
 import axios from "axios";
@@ -27,6 +29,7 @@ const formSchema = z.object({
 
 type SettingFormValues = z.infer<typeof formSchema>;
 const SettingForm = ({ store }: { store: Store }) => {
+  const origin = useOrigin();
   const router = useRouter();
   const params = useParams();
   const [open, setOpen] = useState(false);
@@ -113,6 +116,12 @@ const SettingForm = ({ store }: { store: Store }) => {
           </Button>
         </form>
       </Form>
+      <Separator />
+      <ApiAlert
+        title="NEXT_API_URL"
+        description={`${origin}/api/store/${params.storeId}`}
+        variant="admin"
+      />
     </>
   );
 };
