@@ -12,7 +12,6 @@ import {
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { useOrigin } from "@/hooks/use-origin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Billboard } from "@prisma/client";
 import axios from "axios";
@@ -30,7 +29,6 @@ const formSchema = z.object({
 
 type BillboardFormValues = z.infer<typeof formSchema>;
 const BillboardForm = ({ billboard }: { billboard: Billboard | null }) => {
-  const origin = useOrigin();
   const router = useRouter();
   const params = useParams();
   const [open, setOpen] = useState(false);
@@ -76,8 +74,8 @@ const BillboardForm = ({ billboard }: { billboard: Billboard | null }) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
-      toast.success(toastMessage);
+      router.push(`/${params.storeId}/billboards`);
+      toast.success("Billboards deleted");
     } catch (error) {
       toast.error("Make sure you removed all billboard categories first.");
     } finally {
