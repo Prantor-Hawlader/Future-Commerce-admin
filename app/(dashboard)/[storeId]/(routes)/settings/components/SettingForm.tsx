@@ -118,9 +118,9 @@ const SettingForm = ({ store }: { store: Store }) => {
       </Form>
       <Separator />
       <ApiAlert
-        title="NEXT_API_URL"
-        description={`${origin}/api/store/${params.storeId}`}
-        variant="admin"
+        title="NEXT_PUBLIC_API_URL"
+        description={`${origin}/api/${params.storeId}`}
+        variant="public"
       />
     </>
   );

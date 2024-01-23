@@ -41,7 +41,7 @@ model Category {
   storeId     String
   store       Store     @relation("StoreToCategory", fields: [storeId], references: [id])
   billboardId String
-  billboard   Billboard @relation(fields: [billboardId], references: [id])
+  billboard   Billboard @relation(fields: [billboardId], references: [id], onDelete: Cascade)
 
   products Product[] @relation("CategoryToProduct")
 
@@ -85,7 +85,7 @@ model Product {
   store   Store  @relation("StoreToProduct", fields: [storeId], references: [id])
 
   categoryId String
-  category   Category    @relation("CategoryToProduct", fields: [categoryId], references: [id])
+  category   Category    @relation("CategoryToProduct", fields: [categoryId], references: [id], onDelete: Cascade)
   orderItems OrderItem[]
 
   name       String
@@ -93,10 +93,10 @@ model Product {
   isFeatured Boolean
   isArchived Boolean
   sizeId     String
-  size       Size    @relation(fields: [sizeId], references: [id])
+  size       Size    @relation(fields: [sizeId], references: [id], onDelete: Cascade)
 
   colorId String
-  color   Color  @relation(fields: [colorId], references: [id])
+  color   Color  @relation(fields: [colorId], references: [id], onDelete: Cascade)
 
   images    Image[]
   createdAt DateTime @default(now())
@@ -111,7 +111,7 @@ model Product {
 model Image {
   id        String  @id @default(uuid())
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   url       String
   createdAt DateTime @default(now())

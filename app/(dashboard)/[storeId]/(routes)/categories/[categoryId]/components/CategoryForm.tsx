@@ -84,10 +84,10 @@ const CategoryForm = ({
     try {
       setLoading(true);
       await axios.delete(
-        `/api/${params.storeId}/category/${params.categoryId}`
+        `/api/${params.storeId}/categories/${params.categoryId}`
       );
       router.refresh();
-      router.push(`/${params.storeId}/category`);
+      router.push(`/${params.storeId}/categories`);
       toast.success("Category deleted");
     } catch (error) {
       toast.error(

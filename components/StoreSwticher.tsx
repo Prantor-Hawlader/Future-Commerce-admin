@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronsUpDown, PlusCircle } from "lucide-react";
+import { Check, ChevronsUpDown, PlusCircle, StoreIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -53,8 +53,9 @@ const StoreSwticher = ({ className, items = [] }: StoreSwticherProps) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[200px] "
         >
+          <StoreIcon className="mr-2 w-5 h-5" />
           {currentStore?.label}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
