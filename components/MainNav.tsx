@@ -56,7 +56,7 @@ const MainNav = ({
             "text-sm font-medium transition-colors hover:text-primary",
 
             route.active
-              ? "text-emerald-500 font-extrabold dark:text-white"
+              ? "text-emerald-500 font-extrabold dark:text-emerald-500"
               : "text-muted-foreground"
           )}
         >
